@@ -1,11 +1,11 @@
 ## Name:
 
-[Russian Travel](https://limit1ezz.github.io/russian-travel)
+[Mesto](https://limit1ezz.github.io/mesto)
 
 ## Links:
 
-- [Link to the Website](https://limit1ezz.github.io/russian-travel)
-- [Link to the Figma Project](<https://www.figma.com/file/dPNh4aDsI5qo4dtwrKIPEn/Sprint-3_-Russia-_-desktop-%2B-mobile-(Copy)?node-id=62863%3A634>)
+- [Link to the Website](https://limit1ezz.github.io/mesto)
+- [Link to the Figma Project](<https://www.figma.com/file/Kdk4gwcBctcbjuZNCesp9l/JavaScript.-Sprint-4-(Copy)?node-id=28212%3A212>)
 
 ## Functionality:
 
@@ -13,19 +13,19 @@
 - There is a Normalize.css;
 - CSS is written using the BEM folder structure;
 - The project is hosted on github pages;
-- Images is optimized;
 - Stylelint is used for CSS linting;
+- Pure JS is used for interacting;
 
 ## Stack description:
 
 - [HTML5]
 - [CSS]
+- [JS]
 - [adaptive]
 - [semantic]
 - [BEM]
-- [github_pages]
+- [github pages]
 - [flex]
-- [grid]
 
 ## Available Scripts
 
