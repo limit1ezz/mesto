@@ -1,0 +1,16 @@
+.profile__info {
+  margin-top: 26px;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+}
+
+@media screen and (min-width: 576px) {
+  .profile__info {
+    margin-top: 0;
+    justify-content: start;
+    flex-grow: 1;
+  }
+}
+

@@ -1,0 +1,9 @@
+.profile__image {
+  display: block;
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
