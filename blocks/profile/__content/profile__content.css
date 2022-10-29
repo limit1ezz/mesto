@@ -1,11 +1,10 @@
-.profile__info-box {
-  position: relative;
-  padding: 0 42px;
+.profile__content {
+  padding-left: 27px;
   overflow: hidden;
 }
 
 @media screen and (min-width: 576px) {
-  .profile__info-box {
+  .profile__content {
     padding-left: 0;
   }
 }

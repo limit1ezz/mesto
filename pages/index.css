@@ -21,11 +21,11 @@
 @import url("../blocks/profile/__inner/profile__inner.css");
 @import url("../blocks/profile/__image/profile__image.css");
 @import url("../blocks/profile/__info/profile__info.css");
+@import url("../blocks/profile/__content/profile__content.css");
 @import url("../blocks/profile/__name/profile__name.css");
 @import url("../blocks/profile/__description/profile__description.css");
-@import url("../blocks/profile/__add-image/profile__add-image.css");
-@import url("../blocks/profile/__info-box/profile__info-box.css");
 @import url("../blocks/profile/__edit/profile__edit.css");
+@import url("../blocks/profile/__add-image/profile__add-image.css");
 
 @import url("../blocks/photos/photos.css");
 @import url("../blocks/photos/__inner/photos__inner.css");
@@ -50,6 +50,5 @@
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/__input/form__input.css");
 @import url("../blocks/form/__button/form__button.css");
-
-@import url("../blocks/visually-hidden/visually-hidden.css");
+@import url("../blocks/form/__label/form__label.css");
 

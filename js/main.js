@@ -14,14 +14,10 @@ function openPopupHandler() {
   console.log(profileName);
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
-  // When the modal is shown, we want a fixed body
-  document.body.style.overflow = "hidden";
 }
 
 function closePopupHandler() {
   popup.classList.remove("popup_opened");
-  // When the modal is closed, we want a scrolled body
-  document.body.style.overflow = "auto";
 }
 
 function formSubmitHandler(evt) {
@@ -43,4 +39,3 @@ likes.forEach((like) => {
       : like.classList.add("photo-card__like_active");
   });
 });
-

@@ -4,6 +4,7 @@
   overflow: hidden;
   width: 100%;
   justify-content: center;
+  gap: 9px;
 }
 
 @media screen and (min-width: 576px) {
@@ -11,6 +12,7 @@
     margin-top: 0;
     justify-content: start;
     flex-grow: 1;
+    gap: 19px;
   }
 }
 
