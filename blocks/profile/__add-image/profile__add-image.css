@@ -10,6 +10,11 @@
   background-position: center;
   background-size: 16px;
   border: 2px solid rgb(255 255 255 / 100%);
+  cursor: pointer;
+}
+
+.profile__add-image:hover {
+  opacity: 0.6;
 }
 
 @media screen and (min-width: 576px) {
@@ -19,4 +24,3 @@
     background-size: 22px;
   }
 }
-

@@ -1,5 +1,6 @@
 .photo-card__like {
   margin-left: 10px;
+  padding: 0;
   width: 22px;
   height: 19px;
   flex-shrink: 0;
@@ -8,5 +9,11 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
+.photo-card__like:hover {
+  opacity: 0.5;
 }
 
