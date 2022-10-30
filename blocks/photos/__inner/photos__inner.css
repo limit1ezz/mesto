@@ -1,6 +1,7 @@
 .photos__inner {
   margin-top: 0;
   margin-bottom: 0;
+  padding-left: 0;
   display: grid;
   list-style: none;
   grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));

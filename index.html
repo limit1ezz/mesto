@@ -11,18 +11,16 @@
   <body class="root">
     <div class="wrapper">
       <header class="page-header wrapper__page-header">
-        <div class="page-header__inner">
-          <a class="page-header__logo logo">
-            <img class="logo__image" src="./images/header-logo.svg"
-              alt="Логотип
-              сайта">
-          </a>
-        </div>
+        <a class="page-header__logo logo">
+          <img class="logo__image" src="./images/header-logo.svg"
+            alt="Логотип
+            сайта">
+        </a>
       </header>
 
       <main class="page-content wrapper__page-content">
         <section class="profile" aria-label="Информация о пользователе">
-          <div class="profile__inner container">
+          <div class="profile__inner">
             <img class="profile__image" src="./images/profile-photo.jpg"
               alt="Аватар пользователя">
             <div class="profile__info">
@@ -30,22 +28,23 @@
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__description">Исследователь океана</p>
               </div>
-              <button type="button" class="profile__edit"></button>
+              <button type="button" class="profile__edit" aria-label="Изменить профиль"></button>
             </div>
-            <button type="button" class="profile__add-image">
+            <button type="button" class="profile__add-image" aria-label="Добавить изображение">
             </button>
           </div>
         </section>
 
         <section class="photos" aria-label="Коллекция фотографий пользователя">
-          <ul class="photos__inner container">
+          <ul class="photos__inner">
             <li>
               <article class="photo-card">
                 <img src="./images/photo-grid-atharva-tulsi.jpg" alt="Вершина
                   горы, покрытая облаками." class="photo-card__image">
                 <div class="photo-card__content">
                   <h2 class="photo-card__title">Карачаевск</h2>
-                  <button type="button" class="photo-card__like"></button>
+                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+                  </button>
                 </div>
               </article>
             </li>
@@ -55,7 +54,8 @@
                   туманом и собака, стоящая на спресованном сене." class="photo-card__image">
                 <div class="photo-card__content">
                   <h2 class="photo-card__title">Собака на стоге сена</h2>
-                  <button type="button" class="photo-card__like"></button>
+                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+                  </button>
                 </div>
               </article>
             </li>
@@ -65,7 +65,8 @@
                   class="photo-card__image">
                 <div class="photo-card__content">
                   <h2 class="photo-card__title">Сочи</h2>
-                  <button type="button" class="photo-card__like"></button>
+                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+                  </button>
                 </div>
               </article>
             </li>
@@ -76,7 +77,8 @@
                   class="photo-card__image">
                 <div class="photo-card__content">
                   <h2 class="photo-card__title">Озеро Байкал</h2>
-                  <button type="button" class="photo-card__like photo-card__like_active"></button>
+                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+                  </button>
                 </div>
               </article>
             </li>
@@ -87,7 +89,8 @@
                   class="photo-card__image">
                 <div class="photo-card__content">
                   <h2 class="photo-card__title">Гора Эльбрус</h2>
-                  <button type="button" class="photo-card__like"></button>
+                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+                  </button>
                 </div>
               </article>
             </li>
@@ -98,7 +101,8 @@
                   class="photo-card__image">
                 <div class="photo-card__content">
                   <h2 class="photo-card__title">Домбай</h2>
-                  <button type="button" class="photo-card__like"></button>
+                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+                  </button>
                 </div>
               </article>
             </li>
@@ -107,20 +111,24 @@
       </main>
 
       <footer class="page-footer wrapper__page-footer">
-        <p class="page-footer__copyright container">&copy; 2022. Cyrill Galkin</p>
+        <p class="page-footer__copyright">&copy; 2022. Cyrill Galkin</p>
       </footer>
 
       <div class="popup">
         <div class="popup__container">
-          <button class="popup__close-btn"></button>
+          <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form form">
-            <label for="name-input" class="form__label">Имя пользователя</label>
-            <input type="text" class="form__input" id="name-input" autocomplete="off">
-            <label for="description-input" class="form__label">Описание его
-              деятельности</label>
-            <input type="text" class="form__input" id="description-input" autocomplete="off">
-            <button class="form__button" type="submit">Сохранить</button>
+          <form class="popup__form form" name="profile-edit-form">
+            <label class="form__label" aria-label="Имя пользователя">
+              <input type="text"
+                class="form__input" id="user-name-input" name="user-name" autocomplete="off">
+            </label>
+            <label class="form__label" aria-label="Описание деятельности">
+              <input type="text" class="form__input" id="job-description-input"
+                name="job-description"
+                autocomplete="off">
+            </label>
+            <button type="submit" class="form__button">Сохранить</button>
           </form>
         </div>
       </div>

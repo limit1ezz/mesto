@@ -1,17 +1,14 @@
-let profileEdit = document.querySelector(".profile__edit");
-let profileDescription = document.querySelector(".profile__description");
-let profileName = document.querySelector(".profile__name");
-let popup = document.querySelector(".popup");
-let closeBtn = popup.querySelector(".popup__close-btn");
-let formElement = document.querySelector(".form");
-let nameInput = formElement.querySelector("#name-input");
-let descriptionInput = formElement.querySelector("#description-input");
-let photos = document.querySelector(".photos");
-let likes = photos.querySelectorAll(".photo-card__like");
+const profileEdit = document.querySelector(".profile__edit");
+const profileDescription = document.querySelector(".profile__description");
+const profileName = document.querySelector(".profile__name");
+const popup = document.querySelector(".popup");
+const closeBtn = popup.querySelector(".popup__close-btn");
+const formElement = document.querySelector(".form");
+const nameInput = formElement.querySelector("#user-name-input");
+const descriptionInput = formElement.querySelector("#job-description-input");
 
 function openPopupHandler() {
   popup.classList.add("popup_opened");
-  console.log(profileName);
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
 }
@@ -20,9 +17,8 @@ function closePopupHandler() {
   popup.classList.remove("popup_opened");
 }
 
-function formSubmitHandler(evt) {
+function submitFormHandler(evt) {
   evt.preventDefault();
-  console.log(nameInput.value);
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
   closePopupHandler();
@@ -30,7 +26,11 @@ function formSubmitHandler(evt) {
 
 profileEdit.addEventListener("click", openPopupHandler);
 closeBtn.addEventListener("click", closePopupHandler);
-formElement.addEventListener("submit", formSubmitHandler);
+formElement.addEventListener("submit", submitFormHandler);
+
+/*
+const photos = document.querySelector(".photos");
+const likes = photos.querySelectorAll(".photo-card__like");
 
 likes.forEach((like) => {
   like.addEventListener("click", () => {
@@ -39,3 +39,5 @@ likes.forEach((like) => {
       : like.classList.add("photo-card__like_active");
   });
 });
+*/
+
