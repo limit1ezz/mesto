@@ -8,8 +8,6 @@
 @import url("../blocks/wrapper/__page-content/wrapper__page-content.css");
 @import url("../blocks/wrapper/__page-footer/wrapper__page-footer.css");
 
-@import url("../blocks/container/container.css");
-
 @import url("../blocks/logo/logo.css");
 @import url("../blocks/logo/__image/logo__image.css");
 
@@ -50,5 +48,4 @@
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/__input/form__input.css");
 @import url("../blocks/form/__button/form__button.css");
-@import url("../blocks/form/__label/form__label.css");
 
