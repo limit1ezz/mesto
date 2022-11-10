@@ -30,7 +30,8 @@
               </div>
               <button type="button" class="profile__edit" aria-label="Изменить профиль"></button>
             </div>
-            <button type="button" class="profile__add-image" aria-label="Добавить изображение">
+            <button type="button" class="profile__add-photo-card" aria-label="Добавить карточку с
+              изображением">
             </button>
           </div>
         </section>
@@ -118,15 +119,16 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form form" name="edit-profile">
+          <form class="popup__form form form_edit-profile" name="edit-profile">
             <label class="form__label" aria-label="Имя пользователя">
               <input type="text"
-                class="form__input form__input_type_user-name" name="user-name" autocomplete="off">
+                class="form__input form__input_type_user-name" name="user-name" autocomplete="off"
+                placeholder="Имя">
             </label>
             <label class="form__label" aria-label="Описание деятельности">
               <input type="text" class="form__input form__input_type_job-description"
                 name="job-description"
-                autocomplete="off">
+                autocomplete="off" placeholder="Описание деятельности">
             </label>
             <button type="submit" class="form__button">Сохранить</button>
           </form>
@@ -137,16 +139,16 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form form" name="add-photo-card">
+          <form class="popup__form form form_add-photo-card" name="add-photo-card">
             <label class="form__label" aria-label="Название места">
               <input type="text"
                 class="form__input form__input_type_place-name" name="place-name"
-                autocomplete="off">
+                autocomplete="off" placeholder="Название">
             </label>
             <label class="form__label" aria-label="Ссылка на картинку">
               <input type="text" class="form__input form__input_type_image-link"
                 name="image-link"
-                autocomplete="off">
+                autocomplete="off" placeholder="Ссылка на картинку">
             </label>
             <button type="submit" class="form__button">Создать</button>
           </form>

@@ -23,7 +23,7 @@
 @import url("../blocks/profile/__name/profile__name.css");
 @import url("../blocks/profile/__description/profile__description.css");
 @import url("../blocks/profile/__edit/profile__edit.css");
-@import url("../blocks/profile/__add-image/profile__add-image.css");
+@import url("../blocks/profile/__add-photo-card/profile__add-photo-card.css");
 
 @import url("../blocks/photos/photos.css");
 @import url("../blocks/photos/__inner/photos__inner.css");
