@@ -32,19 +32,6 @@ const initialCards = [
   },
 ];
 
-/*
-const photos = document.querySelector(".photos");
-const likes = photos.querySelectorAll(".photo-card__like");
-
-likes.forEach((like) => {
-  like.addEventListener("click", () => {
-    like.classList.contains("photo-card__like_active")
-      ? like.classList.remove("photo-card__like_active")
-      : like.classList.add("photo-card__like_active");
-  });
-});
-*/
-
 /* Dom Elements */
 
 // Elements
@@ -147,8 +134,16 @@ function generatePhotoCard(card) {
     evt.target.closest(".photos__item").remove();
   }
 
-  function handleImagePopup(evt) {
-    console.log("Image Popup");
+  function handleImagePopup() {
+    const imagePopup = document.querySelector(".popup_image");
+    const image = imagePopup.querySelector(".image-card__photo");
+    const caption = imagePopup.querySelector(".image-card__caption");
+
+    image.src = card.src;
+    image.alt = card.alt;
+    caption.textContent = card.title;
+
+    togglePopup(imagePopup);
   }
 
   // Event Listeners
@@ -160,10 +155,8 @@ function generatePhotoCard(card) {
 }
 
 function renderPhotoCard(card) {
-  photosContainer.append(generatePhotoCard(card));
+  photosContainer.prepend(generatePhotoCard(card));
 }
-
-/* Main */
 
 initialCards.forEach((card) => {
   renderPhotoCard(card);

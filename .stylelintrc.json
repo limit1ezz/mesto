@@ -180,4 +180,3 @@
     "function-no-unknown": [true, { "ignoreFunctions": ["alpha"] }]
   }
 }
-
