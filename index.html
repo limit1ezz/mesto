@@ -30,82 +30,14 @@
               </div>
               <button type="button" class="profile__edit" aria-label="Изменить профиль"></button>
             </div>
-            <button type="button" class="profile__add-image" aria-label="Добавить изображение">
+            <button type="button" class="profile__add-photo-card" aria-label="Добавить карточку с
+              изображением">
             </button>
           </div>
         </section>
 
         <section class="photos" aria-label="Коллекция фотографий пользователя">
           <ul class="photos__inner">
-            <li>
-              <article class="photo-card">
-                <img src="./images/photo-grid-atharva-tulsi.jpg" alt="Вершина
-                  горы, покрытая облаками." class="photo-card__image">
-                <div class="photo-card__content">
-                  <h2 class="photo-card__title">Карачаевск</h2>
-                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
-                  </button>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="photo-card">
-                <img src="./images/photo-grid-tuman.jpg" alt="Поле, покрытое
-                  туманом и собака, стоящая на спресованном сене." class="photo-card__image">
-                <div class="photo-card__content">
-                  <h2 class="photo-card__title">Собака на стоге сена</h2>
-                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
-                  </button>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="photo-card">
-                <img src="./images/photo-grid-sochi.jpg" alt="Лес в тумане."
-                  class="photo-card__image">
-                <div class="photo-card__content">
-                  <h2 class="photo-card__title">Сочи</h2>
-                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
-                  </button>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="photo-card">
-                <img src="./images/photo-grid-baikal.jpg" alt="Пляж озера
-                  Байкал, с горами на заднем фоне."
-                  class="photo-card__image">
-                <div class="photo-card__content">
-                  <h2 class="photo-card__title">Озеро Байкал</h2>
-                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
-                  </button>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="photo-card">
-                <img src="./images/photo-grid-elbrus.jpg" alt="Вершина
-                  Эльбруса."
-                  class="photo-card__image">
-                <div class="photo-card__content">
-                  <h2 class="photo-card__title">Гора Эльбрус</h2>
-                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
-                  </button>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="photo-card">
-                <img src="./images/photo-grid-baikal-2.jpg" alt="Отвесная скала
-                  на фоне пляжа озера."
-                  class="photo-card__image">
-                <div class="photo-card__content">
-                  <h2 class="photo-card__title">Домбай</h2>
-                  <button type="button" class="photo-card__like" aria-label="Поставить лайк">
-                  </button>
-                </div>
-              </article>
-            </li>
           </ul>
         </section>
       </main>
@@ -114,24 +46,74 @@
         <p class="page-footer__copyright">&copy; 2022. Cyrill Galkin</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup popup_edit-profile">
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form form" name="profile-edit-form">
+          <form class="popup__form form form_edit-profile" name="edit-profile">
             <label class="form__label" aria-label="Имя пользователя">
               <input type="text"
-                class="form__input" id="user-name-input" name="user-name" autocomplete="off">
+                class="form__input form__input_type_user-name" name="user-name" autocomplete="off"
+                placeholder="Имя">
             </label>
             <label class="form__label" aria-label="Описание деятельности">
-              <input type="text" class="form__input" id="job-description-input"
+              <input type="text" class="form__input form__input_type_job-description"
                 name="job-description"
-                autocomplete="off">
+                autocomplete="off" placeholder="Описание деятельности">
             </label>
             <button type="submit" class="form__button">Сохранить</button>
           </form>
         </div>
       </div>
+
+      <div class="popup popup_add-photo-card">
+        <div class="popup__container">
+          <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form form form_add-photo-card" name="add-photo-card">
+            <label class="form__label" aria-label="Название места">
+              <input type="text"
+                class="form__input form__input_type_place-name" name="place-name"
+                autocomplete="off" placeholder="Название">
+            </label>
+            <label class="form__label" aria-label="Ссылка на картинку">
+              <input type="text" class="form__input form__input_type_image-link"
+                name="image-link"
+                autocomplete="off" placeholder="Ссылка на картинку">
+            </label>
+            <button type="submit" class="form__button">Создать</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_image">
+        <div class="popup__container popup__container_type_image">
+          <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
+          <figure class="image-card">
+            <img class="image-card__photo"
+              src="#"
+              alt="#">
+            <figcaption class="image-card__caption"></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <template id="photo-card">
+        <li class="photos__item">
+          <article class="photo-card">
+            <button type="button" class="photo-card__delete" aria-label="Поставить лайк">
+            </button>
+            <img src="#" alt="#"
+              class="photo-card__image">
+            <div class="photo-card__content">
+              <h2 class="photo-card__title"></h2>
+              <button type="button" class="photo-card__like" aria-label="Поставить лайк">
+              </button>
+            </div>
+          </article>
+        </li>
+      </template>
+
     </div>
     <script src="./js/main.js"></script>
   </body>

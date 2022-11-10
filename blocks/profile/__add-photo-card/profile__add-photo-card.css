@@ -1,4 +1,4 @@
-.profile__add-image {
+.profile__add-photo-card {
   margin-top: 32px;
   padding: 0;
   box-sizing: border-box;
@@ -14,12 +14,12 @@
   cursor: pointer;
 }
 
-.profile__add-image:hover {
+.profile__add-photo-card:hover {
   opacity: 0.6;
 }
 
 @media screen and (min-width: 576px) {
-  .profile__add-image {
+  .profile__add-photo-card {
     margin-top: 0;
     max-width: 150px;
     background-size: 22px;
