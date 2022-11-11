@@ -118,6 +118,9 @@ function generatePhotoCard(card) {
   const title = newPhotoCard.querySelector(".photo-card__title");
   const likeBtn = newPhotoCard.querySelector(".photo-card__like");
   const deleteBtn = newPhotoCard.querySelector(".photo-card__delete");
+  const imagePopup = document.querySelector(".popup_type_image");
+  const photo = imagePopup.querySelector(".image-card__photo");
+  const caption = imagePopup.querySelector(".image-card__caption");
 
   image.src = card.src;
   image.alt = card.title;
@@ -129,16 +132,12 @@ function generatePhotoCard(card) {
   }
 
   function handleDeletePhotoCard(evt) {
-    evt.target.closest(".photos__item").remove();
+    newPhotoCard.remove();
   }
 
   function handleImagePopup() {
-    const imagePopup = document.querySelector(".popup_type_image");
-    const image = imagePopup.querySelector(".image-card__photo");
-    const caption = imagePopup.querySelector(".image-card__caption");
-
-    image.src = card.src;
-    image.alt = card.title;
+    photo.src = card.src;
+    photo.alt = card.title;
     caption.textContent = card.title;
 
     openPopup(imagePopup);
