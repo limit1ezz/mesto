@@ -2,33 +2,27 @@ const initialCards = [
   {
     title: "Карачаевск",
     src: "./images/photo-grid-atharva-tulsi.jpg",
-    alt: "Вершина горы, покрытая облаками.",
   },
   {
     title: "Собака на стоге сена",
     src: "./images/photo-grid-tuman.jpg",
-    alt: "Поле, покрытое туманом и собака, стоящая на спресованном сене.",
   },
   {
     title: "Озеро Байкал",
     src: "./images/photo-grid-baikal.jpg",
-    alt: "Пляж озера Байкал, с горами на заднем фоне.",
   },
   {
     title: "Гора Эльбрус",
     src: "./images/photo-grid-elbrus.jpg",
-    alt: "Вершина Эльбруса.",
   },
   {
     title: "Сочи",
     src: "./images/photo-grid-sochi.jpg",
-    alt: "Лес в тумане.",
   },
 
   {
     title: "Домбай",
     src: "./images/photo-grid-baikal-2.jpg",
-    alt: "Отвесная скала на фоне пляжа озера.",
   },
 ];
 
@@ -126,7 +120,7 @@ function generatePhotoCard(card) {
   const deleteBtn = newPhotoCard.querySelector(".photo-card__delete");
 
   image.src = card.src;
-  image.alt = card.alt;
+  image.alt = card.title;
   title.textContent = card.title;
 
   // Event Handlers
@@ -144,7 +138,7 @@ function generatePhotoCard(card) {
     const caption = imagePopup.querySelector(".image-card__caption");
 
     image.src = card.src;
-    image.alt = card.alt;
+    image.alt = card.title;
     caption.textContent = card.title;
 
     openPopup(imagePopup);
