@@ -2,33 +2,27 @@ const initialCards = [
   {
     title: "Карачаевск",
     src: "./images/photo-grid-atharva-tulsi.jpg",
-    alt: "Вершина горы, покрытая облаками.",
   },
   {
     title: "Собака на стоге сена",
     src: "./images/photo-grid-tuman.jpg",
-    alt: "Поле, покрытое туманом и собака, стоящая на спресованном сене.",
   },
   {
     title: "Озеро Байкал",
     src: "./images/photo-grid-baikal.jpg",
-    alt: "Пляж озера Байкал, с горами на заднем фоне.",
   },
   {
     title: "Гора Эльбрус",
     src: "./images/photo-grid-elbrus.jpg",
-    alt: "Вершина Эльбруса.",
   },
   {
     title: "Сочи",
     src: "./images/photo-grid-sochi.jpg",
-    alt: "Лес в тумане.",
   },
 
   {
     title: "Домбай",
     src: "./images/photo-grid-baikal-2.jpg",
-    alt: "Отвесная скала на фоне пляжа озера.",
   },
 ];
 
@@ -45,8 +39,8 @@ const addPhotoCardBtn = document.querySelector(".profile__add-photo-card");
 const closePopupBtns = document.querySelectorAll(".popup__close-btn");
 
 // Popups
-const editProfilePopup = document.querySelector(".popup_edit-profile");
-const addPhotoCardPopup = document.querySelector(".popup_add-photo-card");
+const editProfilePopup = document.querySelector(".popup_type_edit-profile");
+const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
 
 // Form
 const editProfileForm = document.querySelector(".form_edit-profile");
@@ -69,19 +63,23 @@ function clearInputs(...inputs) {
 
 /* Popup */
 
-function togglePopup(popup) {
-  popup.classList.toggle("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
 closePopupBtns.forEach((btn) => {
   const popup = btn.closest(".popup");
-  btn.addEventListener("click", () => togglePopup(popup));
+  btn.addEventListener("click", () => closePopup(popup));
 });
 
 /* Edit Profile Popup */
 
 editProfileBtn.addEventListener("click", () => {
-  togglePopup(editProfilePopup);
+  openPopup(editProfilePopup);
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
 });
@@ -90,7 +88,7 @@ function handleEditProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = userName.value;
   profileDescription.textContent = jobDescription.value;
-  togglePopup(editProfilePopup);
+  closePopup(editProfilePopup);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileForm);
@@ -98,15 +96,15 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 /* Add Photo Card Popup */
 
 addPhotoCardBtn.addEventListener("click", () => {
-  togglePopup(addPhotoCardPopup);
+  openPopup(addPhotoCardPopup);
   clearInputs(placeName, imageLink);
 });
 
 function handleAddPhotoCardForm(evt) {
   evt.preventDefault();
   renderPhotoCard({ title: placeName.value, src: imageLink.value, alt: placeName.value });
-  clearInputs(placeName, imageLink);
-  togglePopup(addPhotoCardPopup);
+  evt.target.reset();
+  closePopup(addPhotoCardPopup);
 }
 
 addPhotoCardForm.addEventListener("submit", handleAddPhotoCardForm);
@@ -120,9 +118,12 @@ function generatePhotoCard(card) {
   const title = newPhotoCard.querySelector(".photo-card__title");
   const likeBtn = newPhotoCard.querySelector(".photo-card__like");
   const deleteBtn = newPhotoCard.querySelector(".photo-card__delete");
+  const imagePopup = document.querySelector(".popup_type_image");
+  const photo = imagePopup.querySelector(".image-card__photo");
+  const caption = imagePopup.querySelector(".image-card__caption");
 
   image.src = card.src;
-  image.alt = card.alt;
+  image.alt = card.title;
   title.textContent = card.title;
 
   // Event Handlers
@@ -131,19 +132,15 @@ function generatePhotoCard(card) {
   }
 
   function handleDeletePhotoCard(evt) {
-    evt.target.closest(".photos__item").remove();
+    newPhotoCard.remove();
   }
 
   function handleImagePopup() {
-    const imagePopup = document.querySelector(".popup_image");
-    const image = imagePopup.querySelector(".image-card__photo");
-    const caption = imagePopup.querySelector(".image-card__caption");
-
-    image.src = card.src;
-    image.alt = card.alt;
+    photo.src = card.src;
+    photo.alt = card.title;
     caption.textContent = card.title;
 
-    togglePopup(imagePopup);
+    openPopup(imagePopup);
   }
 
   // Event Listeners

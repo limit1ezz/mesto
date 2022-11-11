@@ -9,6 +9,12 @@
 
 ## Functionality:
 
+- Profile editing;
+- Adding new photo cards with link;
+- Like and delete photos.
+
+## Stack description:
+
 - Adaptive markup with BEM methodology in mind;
 - There is a Normalize.css;
 - CSS is written using the BEM folder structure;
@@ -16,7 +22,7 @@
 - Stylelint is used for CSS linting;
 - Pure JS is used for interacting;
 
-## Stack description:
+## Stack:
 
 - [HTML5]
 - [CSS]
