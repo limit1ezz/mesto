@@ -45,8 +45,8 @@ const addPhotoCardBtn = document.querySelector(".profile__add-photo-card");
 const closePopupBtns = document.querySelectorAll(".popup__close-btn");
 
 // Popups
-const editProfilePopup = document.querySelector(".popup_edit-profile");
-const addPhotoCardPopup = document.querySelector(".popup_add-photo-card");
+const editProfilePopup = document.querySelector(".popup_type_edit-profile");
+const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
 
 // Form
 const editProfileForm = document.querySelector(".form_edit-profile");
@@ -135,7 +135,7 @@ function generatePhotoCard(card) {
   }
 
   function handleImagePopup() {
-    const imagePopup = document.querySelector(".popup_image");
+    const imagePopup = document.querySelector(".popup_type_image");
     const image = imagePopup.querySelector(".image-card__photo");
     const caption = imagePopup.querySelector(".image-card__caption");
 
