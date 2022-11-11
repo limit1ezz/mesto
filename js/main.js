@@ -69,19 +69,23 @@ function clearInputs(...inputs) {
 
 /* Popup */
 
-function togglePopup(popup) {
-  popup.classList.toggle("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
 closePopupBtns.forEach((btn) => {
   const popup = btn.closest(".popup");
-  btn.addEventListener("click", () => togglePopup(popup));
+  btn.addEventListener("click", () => closePopup(popup));
 });
 
 /* Edit Profile Popup */
 
 editProfileBtn.addEventListener("click", () => {
-  togglePopup(editProfilePopup);
+  openPopup(editProfilePopup);
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
 });
@@ -90,7 +94,7 @@ function handleEditProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = userName.value;
   profileDescription.textContent = jobDescription.value;
-  togglePopup(editProfilePopup);
+  closePopup(editProfilePopup);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileForm);
@@ -98,15 +102,15 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 /* Add Photo Card Popup */
 
 addPhotoCardBtn.addEventListener("click", () => {
-  togglePopup(addPhotoCardPopup);
+  openPopup(addPhotoCardPopup);
   clearInputs(placeName, imageLink);
 });
 
 function handleAddPhotoCardForm(evt) {
   evt.preventDefault();
   renderPhotoCard({ title: placeName.value, src: imageLink.value, alt: placeName.value });
-  clearInputs(placeName, imageLink);
-  togglePopup(addPhotoCardPopup);
+  evt.target.reset();
+  closePopup(addPhotoCardPopup);
 }
 
 addPhotoCardForm.addEventListener("submit", handleAddPhotoCardForm);
@@ -143,7 +147,7 @@ function generatePhotoCard(card) {
     image.alt = card.alt;
     caption.textContent = card.title;
 
-    togglePopup(imagePopup);
+    openPopup(imagePopup);
   }
 
   // Event Listeners
