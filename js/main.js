@@ -11,6 +11,7 @@ const addPhotoCardBtn = document.querySelector(".profile__add-photo-card");
 const closePopupBtns = document.querySelectorAll(".popup__close-btn");
 
 // Popups
+const popups = document.querySelectorAll(".popup");
 const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
 
@@ -56,14 +57,18 @@ function closePopup(popup) {
 }
 
 function closePopupWithEscape(evt, popup) {
-  if (evt.key === "Escape") {
-    closePopup(popup);
-  }
+  if (evt.key === "Escape") closePopup(popup);
 }
 
 closePopupBtns.forEach((btn) => {
   const popup = btn.closest(".popup");
   btn.addEventListener("click", () => closePopup(popup));
+});
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) closePopup(popup);
+  });
 });
 
 /* Edit Profile Popup */
