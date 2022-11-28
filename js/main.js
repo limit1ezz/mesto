@@ -1,31 +1,3 @@
-const initialCards = [
-  {
-    title: "Карачаевск",
-    src: "./images/photo-grid-atharva-tulsi.jpg",
-  },
-  {
-    title: "Собака на стоге сена",
-    src: "./images/photo-grid-tuman.jpg",
-  },
-  {
-    title: "Озеро Байкал",
-    src: "./images/photo-grid-baikal.jpg",
-  },
-  {
-    title: "Гора Эльбрус",
-    src: "./images/photo-grid-elbrus.jpg",
-  },
-  {
-    title: "Сочи",
-    src: "./images/photo-grid-sochi.jpg",
-  },
-
-  {
-    title: "Домбай",
-    src: "./images/photo-grid-baikal-2.jpg",
-  },
-];
-
 /* Dom Elements */
 
 // Elements
@@ -39,16 +11,18 @@ const addPhotoCardBtn = document.querySelector(".profile__add-photo-card");
 const closePopupBtns = document.querySelectorAll(".popup__close-btn");
 
 // Popups
+const popups = document.querySelectorAll(".popup");
 const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
 
 // Form
-const editProfileForm = document.querySelector(".form_edit-profile");
-const userName = editProfileForm.querySelector(".form__input_type_user-name");
-const jobDescription = editProfileForm.querySelector(".form__input_type_job-description");
-const addPhotoCardForm = document.querySelector(".form_add-photo-card");
-const placeName = addPhotoCardForm.querySelector(".form__input_type_place-name");
-const imageLink = addPhotoCardForm.querySelector(".form__input_type_image-link");
+const editProfileForm = document.forms["edit-profile"];
+const userName = editProfileForm.elements["user-name"];
+const jobDescription = editProfileForm.elements["job-description"];
+
+const addPhotoCardForm = document.forms["add-photo-card"];
+const placeName = addPhotoCardForm.elements["place-name"];
+const imageLink = addPhotoCardForm.elements["image-link"];
 
 // Templates
 const photoCardTemplate = document
@@ -61,19 +35,40 @@ function clearInputs(...inputs) {
   inputs.forEach((input) => (input.value = ""));
 }
 
+function resetErrors(popup, validationSettings) {
+  const { inputSelector, formSelector } = validationSettings;
+  const formElement = popup.querySelector(formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  inputList.forEach((inputElement) =>
+    hideInputError(formElement, inputElement, validationSettings)
+  );
+}
+
 /* Popup */
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", (evt) => closePopupWithEscape(evt, popup));
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", (evt) => closePopupWithEscape(evt, popup));
+}
+
+function closePopupWithEscape(evt, popup) {
+  if (evt.key === "Escape") closePopup(popup);
 }
 
 closePopupBtns.forEach((btn) => {
   const popup = btn.closest(".popup");
   btn.addEventListener("click", () => closePopup(popup));
+});
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) closePopup(popup);
+  });
 });
 
 /* Edit Profile Popup */
@@ -82,6 +77,9 @@ editProfileBtn.addEventListener("click", () => {
   openPopup(editProfilePopup);
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
+  resetErrors(editProfilePopup, validationSettings);
+  const buttonElement = editProfilePopup.querySelector(".form__button");
+  enableButton(buttonElement, validationSettings);
 });
 
 function handleEditProfileForm(evt) {
@@ -98,6 +96,9 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 addPhotoCardBtn.addEventListener("click", () => {
   openPopup(addPhotoCardPopup);
   clearInputs(placeName, imageLink);
+  resetErrors(addPhotoCardPopup, validationSettings);
+  const buttonElement = addPhotoCardPopup.querySelector(".form__button");
+  disableButton(buttonElement, validationSettings);
 });
 
 function handleAddPhotoCardForm(evt) {

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./js/data.js"></script>
     <script defer src="./js/main.js"></script>
+    <script defer src="./js/validate.js"></script>
     <title>Mesto</title>
   </head>
 
@@ -51,17 +53,23 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form form form_edit-profile" name="edit-profile">
+          <form class="popup__form form form_edit-profile" name="edit-profile" novalidate>
             <label class="form__label" aria-label="Имя пользователя">
-              <input type="text"
-                class="form__input form__input_type_user-name" name="user-name" autocomplete="off"
-                placeholder="Имя" required>
+              <input type="text" class="form__input form__input_type_user-name"
+                id="user-name-input"
+                name="user-name"
+                autocomplete="off"
+                placeholder="Имя" minlength="2" maxlength="40" required>
             </label>
+            <span class="form__error-message user-name-input-error"></span>
             <label class="form__label" aria-label="Описание деятельности">
               <input type="text" class="form__input form__input_type_job-description"
+                id="job-description-input"
                 name="job-description"
-                autocomplete="off" placeholder="Описание деятельности" required>
+                autocomplete="off" placeholder="Описание деятельности" minlength="2" maxlength="200"
+                required>
             </label>
+            <span class="form__error-message job-description-input-error"></span>
             <button type="submit" class="form__button">Сохранить</button>
           </form>
         </div>
@@ -71,17 +79,21 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form form form_add-photo-card" name="add-photo-card">
+          <form class="popup__form form form_add-photo-card" name="add-photo-card" novalidate>
             <label class="form__label" aria-label="Название места">
-              <input type="text"
-                class="form__input form__input_type_place-name" name="place-name"
-                autocomplete="off" placeholder="Название" required>
+              <input type="text" class="form__input form__input_type_place-name"
+                id="place-name-input"
+                name="place-name"
+                autocomplete="off" placeholder="Название" minlength="2" maxlength="30" required>
             </label>
+            <span class="form__error-message place-name-input-error"></span>
             <label class="form__label" aria-label="Ссылка на картинку">
               <input type="url" class="form__input form__input_type_image-link"
+                id="image-link-input"
                 name="image-link"
                 autocomplete="off" placeholder="Ссылка на картинку" required>
             </label>
+            <span class="form__error-message image-link-input-error"></span>
             <button type="submit" class="form__button">Создать</button>
           </form>
         </div>
