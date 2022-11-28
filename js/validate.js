@@ -1,3 +1,12 @@
+function resetErrors(popup, validationSettings) {
+  const { inputSelector, formSelector } = validationSettings;
+  const formElement = popup.querySelector(formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  inputList.forEach((inputElement) =>
+    hideInputError(formElement, inputElement, validationSettings)
+  );
+}
+
 function showInputError(formElement, inputElement, errorMessage, validationSettings) {
   const { inputErrorClass, errorClass } = validationSettings;
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -73,4 +82,3 @@ function enableValidation(validationSettings) {
 
 // Вызовем функцию
 enableValidation(validationSettings);
-

@@ -8,10 +8,9 @@
   line-height: 15px;
   font-weight: 400;
   color: #f00;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .form__error-message ~ .form__error-message {
   margin-bottom: 0;
 }
-
