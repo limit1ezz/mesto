@@ -12,8 +12,12 @@ const closePopupBtns = document.querySelectorAll(".popup__close-btn");
 
 // Popups
 const popups = document.querySelectorAll(".popup");
+
 const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
+const imagePopup = document.querySelector(".popup_type_image");
+const photo = imagePopup.querySelector(".image-card__photo");
+const caption = imagePopup.querySelector(".image-card__caption");
 
 // Form
 const editProfileForm = document.forms["edit-profile"];
@@ -24,40 +28,30 @@ const addPhotoCardForm = document.forms["add-photo-card"];
 const placeName = addPhotoCardForm.elements["place-name"];
 const imageLink = addPhotoCardForm.elements["image-link"];
 
+const editProfileFormBtn = editProfileForm.querySelector(".form__button");
+const addPhotoCardFormBtn = addPhotoCardForm.querySelector(".form__button");
+
 // Templates
 const photoCardTemplate = document
   .querySelector("#photo-card")
   .content.querySelector(".photos__item");
 
-/* Utility Functions */
-
-function clearInputs(...inputs) {
-  inputs.forEach((input) => (input.value = ""));
-}
-
-function resetErrors(popup, validationSettings) {
-  const { inputSelector, formSelector } = validationSettings;
-  const formElement = popup.querySelector(formSelector);
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  inputList.forEach((inputElement) =>
-    hideInputError(formElement, inputElement, validationSettings)
-  );
-}
-
 /* Popup */
+function closePopupWithEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", (evt) => closePopupWithEscape(evt, popup));
+  document.addEventListener("keydown", closePopupWithEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", (evt) => closePopupWithEscape(evt, popup));
-}
-
-function closePopupWithEscape(evt, popup) {
-  if (evt.key === "Escape") closePopup(popup);
+  document.removeEventListener("keydown", closePopupWithEscape);
 }
 
 closePopupBtns.forEach((btn) => {
@@ -78,8 +72,7 @@ editProfileBtn.addEventListener("click", () => {
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
   resetErrors(editProfilePopup, validationSettings);
-  const buttonElement = editProfilePopup.querySelector(".form__button");
-  enableButton(buttonElement, validationSettings);
+  enableButton(editProfileFormBtn, validationSettings);
 });
 
 function handleEditProfileForm(evt) {
@@ -93,12 +86,11 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 
 /* Add Photo Card Popup */
 
-addPhotoCardBtn.addEventListener("click", () => {
+addPhotoCardBtn.addEventListener("click", (evt) => {
   openPopup(addPhotoCardPopup);
-  clearInputs(placeName, imageLink);
+  addPhotoCardForm.reset();
   resetErrors(addPhotoCardPopup, validationSettings);
-  const buttonElement = addPhotoCardPopup.querySelector(".form__button");
-  disableButton(buttonElement, validationSettings);
+  disableButton(addPhotoCardFormBtn, validationSettings);
 });
 
 function handleAddPhotoCardForm(evt) {
@@ -119,9 +111,6 @@ function generatePhotoCard(card) {
   const title = newPhotoCard.querySelector(".photo-card__title");
   const likeBtn = newPhotoCard.querySelector(".photo-card__like");
   const deleteBtn = newPhotoCard.querySelector(".photo-card__delete");
-  const imagePopup = document.querySelector(".popup_type_image");
-  const photo = imagePopup.querySelector(".image-card__photo");
-  const caption = imagePopup.querySelector(".image-card__caption");
 
   image.src = card.src;
   image.alt = card.title;
