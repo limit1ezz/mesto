@@ -47,10 +47,18 @@ function resetErrors(popup, validationSettings) {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", (evt) => closePopupWithEscape(evt, popup));
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", (evt) => closePopupWithEscape(evt, popup));
+}
+
+function closePopupWithEscape(evt, popup) {
+  if (evt.key === "Escape") {
+    closePopup(popup);
+  }
 }
 
 closePopupBtns.forEach((btn) => {
