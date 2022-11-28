@@ -1,8 +1,7 @@
 .form__error-message {
   margin-top: 3px;
   margin-bottom: 3px;
-  display: flex;
-  box-sizing: border-box;
+  display: inline-block;
   min-height: 30px;
   opacity: 0;
   font-size: 12px;
