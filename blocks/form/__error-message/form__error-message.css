@@ -4,12 +4,12 @@
   display: flex;
   box-sizing: border-box;
   min-height: 30px;
-  opacity: 1;
+  opacity: 0;
   font-size: 12px;
   line-height: 15px;
   font-weight: 400;
   color: #f00;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .form__error-message ~ .form__error-message {
