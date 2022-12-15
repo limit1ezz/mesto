@@ -1,3 +1,7 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { initialCards, validationSettings } from "./constants.js";
+
 /* Dom Elements */
 
 // Elements
@@ -28,15 +32,8 @@ const addPhotoCardForm = document.forms["add-photo-card"];
 const placeName = addPhotoCardForm.elements["place-name"];
 const imageLink = addPhotoCardForm.elements["image-link"];
 
-const editProfileFormBtn = editProfileForm.querySelector(".form__button");
-const addPhotoCardFormBtn = addPhotoCardForm.querySelector(".form__button");
-
-// Templates
-const photoCardTemplate = document
-  .querySelector("#photo-card")
-  .content.querySelector(".photos__item");
-
 /* Popup */
+
 function closePopupWithEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
@@ -71,8 +68,10 @@ editProfileBtn.addEventListener("click", () => {
   openPopup(editProfilePopup);
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
-  resetErrors(editProfilePopup, validationSettings);
-  enableButton(editProfileFormBtn, validationSettings);
+  const editProfileValidation = new FormValidator(editProfileForm, validationSettings);
+  editProfileValidation.enableValidation();
+  editProfileValidation.resetErrors();
+  editProfileValidation.enableButton();
 });
 
 function handleEditProfileForm(evt) {
@@ -89,63 +88,40 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 addPhotoCardBtn.addEventListener("click", (evt) => {
   openPopup(addPhotoCardPopup);
   addPhotoCardForm.reset();
-  resetErrors(addPhotoCardPopup, validationSettings);
-  disableButton(addPhotoCardFormBtn, validationSettings);
+  const addPhotoCardValidation = new FormValidator(addPhotoCardForm, validationSettings);
+  addPhotoCardValidation.enableValidation();
+  addPhotoCardValidation.resetErrors();
+  addPhotoCardValidation.disableButton();
 });
 
 function handleAddPhotoCardForm(evt) {
   evt.preventDefault();
-  renderPhotoCard({ title: placeName.value, src: imageLink.value, alt: placeName.value });
+  renderPhotoCard({ name: placeName.value, src: imageLink.value, alt: placeName.value });
   evt.target.reset();
   closePopup(addPhotoCardPopup);
 }
 
 addPhotoCardForm.addEventListener("submit", handleAddPhotoCardForm);
 
-/* Photo Card */
+/* Image  Popup */
 
-function generatePhotoCard(card) {
-  // Elements
-  const newPhotoCard = photoCardTemplate.cloneNode(true);
-  const image = newPhotoCard.querySelector(".photo-card__image");
-  const title = newPhotoCard.querySelector(".photo-card__title");
-  const likeBtn = newPhotoCard.querySelector(".photo-card__like");
-  const deleteBtn = newPhotoCard.querySelector(".photo-card__delete");
+function openImagePopup(card) {
+  photo.src = card.src;
+  photo.alt = card.name;
+  caption.textContent = card.name;
 
-  image.src = card.src;
-  image.alt = card.title;
-  title.textContent = card.title;
-
-  // Event Handlers
-  function handleLikePhotoCard(evt) {
-    evt.target.classList.toggle("photo-card__like_active");
-  }
-
-  function handleDeletePhotoCard(evt) {
-    newPhotoCard.remove();
-  }
-
-  function handleImagePopup() {
-    photo.src = card.src;
-    photo.alt = card.title;
-    caption.textContent = card.title;
-
-    openPopup(imagePopup);
-  }
-
-  // Event Listeners
-  likeBtn.addEventListener("click", handleLikePhotoCard);
-  deleteBtn.addEventListener("click", handleDeletePhotoCard);
-  image.addEventListener("click", handleImagePopup);
-
-  return newPhotoCard;
+  openPopup(imagePopup);
 }
 
-function renderPhotoCard(card) {
-  photosContainer.prepend(generatePhotoCard(card));
+/* Render Cards */
+
+function renderPhotoCard(item) {
+  const card = new Card(item, "#photo-card", openImagePopup);
+  const cardElement = card.generateCard();
+  photosContainer.prepend(cardElement);
 }
 
-initialCards.forEach((card) => {
-  renderPhotoCard(card);
+initialCards.forEach((initialCard) => {
+  renderPhotoCard(initialCard);
 });
 
