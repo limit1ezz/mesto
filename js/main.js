@@ -32,6 +32,8 @@ const addPhotoCardForm = document.forms["add-photo-card"];
 const placeName = addPhotoCardForm.elements["place-name"];
 const imageLink = addPhotoCardForm.elements["image-link"];
 
+const validations = {};
+
 /* Popup */
 
 function closePopupWithEscape(evt) {
@@ -68,10 +70,9 @@ editProfileBtn.addEventListener("click", () => {
   openPopup(editProfilePopup);
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
-  const editProfileValidation = new FormValidator(editProfileForm, validationSettings);
-  editProfileValidation.enableValidation();
-  editProfileValidation.resetErrors();
-  editProfileValidation.enableButton();
+
+  validations["edit-profile"].resetErrors();
+  validations["edit-profile"].enableButton();
 });
 
 function handleEditProfileForm(evt) {
@@ -88,10 +89,9 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 addPhotoCardBtn.addEventListener("click", (evt) => {
   openPopup(addPhotoCardPopup);
   addPhotoCardForm.reset();
-  const addPhotoCardValidation = new FormValidator(addPhotoCardForm, validationSettings);
-  addPhotoCardValidation.enableValidation();
-  addPhotoCardValidation.resetErrors();
-  addPhotoCardValidation.disableButton();
+
+  validations["add-photo-card"].resetErrors();
+  validations["add-photo-card"].disableButton();
 });
 
 function handleAddPhotoCardForm(evt) {
@@ -115,13 +115,29 @@ function openImagePopup(card) {
 
 /* Render Cards */
 
-function renderPhotoCard(item) {
+function createCard(item) {
   const card = new Card(item, "#photo-card", openImagePopup);
   const cardElement = card.generateCard();
-  photosContainer.prepend(cardElement);
+  return cardElement;
+}
+
+function renderPhotoCard(item) {
+  photosContainer.prepend(createCard(item));
 }
 
 initialCards.forEach((initialCard) => {
   renderPhotoCard(initialCard);
 });
+
+function enableValidation(validationSettings) {
+  const formList = Array.from(document.querySelectorAll(validationSettings.formSelector));
+  formList.forEach((formElement) => {
+    const validation = new FormValidator(formElement, validationSettings);
+    const formName = formElement.getAttribute("name");
+    validations[formName] = validation;
+    validation.enableValidation();
+  });
+}
+
+enableValidation(validationSettings);
 

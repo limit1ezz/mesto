@@ -12,7 +12,6 @@
 @import url("../blocks/logo/__image/logo__image.css");
 
 @import url("../blocks/page-header/page-header.css");
-@import url("../blocks/page-header/__inner/page-header__inner.css");
 @import url("../blocks/page-header/__logo/page-header__logo.css");
 
 @import url("../blocks/profile/profile.css");
@@ -58,4 +57,3 @@
 @import url("../blocks/image-card/image-card.css");
 @import url("../blocks/image-card/__photo/image-card__photo.css");
 @import url("../blocks/image-card/__caption/image-card__caption.css");
-
