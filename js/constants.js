@@ -1,32 +1,32 @@
-const initialCards = [
+export const initialCards = [
   {
-    title: "Карачаевск",
+    name: "Карачаевск",
     src: "./images/photo-grid-atharva-tulsi.jpg",
   },
   {
-    title: "Собака на стоге сена",
+    name: "Собака на стоге сена",
     src: "./images/photo-grid-tuman.jpg",
   },
   {
-    title: "Озеро Байкал",
+    name: "Озеро Байкал",
     src: "./images/photo-grid-baikal.jpg",
   },
   {
-    title: "Гора Эльбрус",
+    name: "Гора Эльбрус",
     src: "./images/photo-grid-elbrus.jpg",
   },
   {
-    title: "Сочи",
+    name: "Сочи",
     src: "./images/photo-grid-sochi.jpg",
   },
 
   {
-    title: "Домбай",
+    name: "Домбай",
     src: "./images/photo-grid-baikal-2.jpg",
   },
 ];
 
-const validationSettings = {
+export const validationSettings = {
   formSelector: ".form",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
@@ -34,3 +34,4 @@ const validationSettings = {
   inputErrorClass: "form__input_type_error",
   errorClass: "form__error-message_active",
 };
+

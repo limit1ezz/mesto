@@ -1,5 +1,8 @@
 /* Dom Elements */
 
+import Card from "./Card.js";
+import { initialCards } from "./constants.js";
+
 // Elements
 const profileDescription = document.querySelector(".profile__description");
 const profileName = document.querySelector(".profile__name");
@@ -31,12 +34,8 @@ const imageLink = addPhotoCardForm.elements["image-link"];
 const editProfileFormBtn = editProfileForm.querySelector(".form__button");
 const addPhotoCardFormBtn = addPhotoCardForm.querySelector(".form__button");
 
-// Templates
-const photoCardTemplate = document
-  .querySelector("#photo-card")
-  .content.querySelector(".photos__item");
-
 /* Popup */
+
 function closePopupWithEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
@@ -102,50 +101,19 @@ function handleAddPhotoCardForm(evt) {
 
 addPhotoCardForm.addEventListener("submit", handleAddPhotoCardForm);
 
-/* Photo Card */
+/* Image  Popup*/
 
-function generatePhotoCard(card) {
-  // Elements
-  const newPhotoCard = photoCardTemplate.cloneNode(true);
-  const image = newPhotoCard.querySelector(".photo-card__image");
-  const title = newPhotoCard.querySelector(".photo-card__title");
-  const likeBtn = newPhotoCard.querySelector(".photo-card__like");
-  const deleteBtn = newPhotoCard.querySelector(".photo-card__delete");
+function openImagePopup(card) {
+  photo.src = card.src;
+  photo.alt = card.name;
+  caption.textContent = card.name;
 
-  image.src = card.src;
-  image.alt = card.title;
-  title.textContent = card.title;
-
-  // Event Handlers
-  function handleLikePhotoCard(evt) {
-    evt.target.classList.toggle("photo-card__like_active");
-  }
-
-  function handleDeletePhotoCard(evt) {
-    newPhotoCard.remove();
-  }
-
-  function handleImagePopup() {
-    photo.src = card.src;
-    photo.alt = card.title;
-    caption.textContent = card.title;
-
-    openPopup(imagePopup);
-  }
-
-  // Event Listeners
-  likeBtn.addEventListener("click", handleLikePhotoCard);
-  deleteBtn.addEventListener("click", handleDeletePhotoCard);
-  image.addEventListener("click", handleImagePopup);
-
-  return newPhotoCard;
+  openPopup(imagePopup);
 }
 
-function renderPhotoCard(card) {
-  photosContainer.prepend(generatePhotoCard(card));
-}
-
-initialCards.forEach((card) => {
-  renderPhotoCard(card);
+initialCards.forEach((item) => {
+  const card = new Card(item, "#photo-card", openImagePopup);
+  const cardElement = card.generateCard();
+  photosContainer.prepend(cardElement);
 });
 
