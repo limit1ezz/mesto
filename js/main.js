@@ -1,7 +1,8 @@
-/* Dom Elements */
-
 import Card from "./Card.js";
-import { initialCards } from "./constants.js";
+import FormValidator from "./FormValidator.js";
+import { initialCards, validationSettings } from "./constants.js";
+
+/* Dom Elements */
 
 // Elements
 const profileDescription = document.querySelector(".profile__description");
@@ -30,9 +31,6 @@ const jobDescription = editProfileForm.elements["job-description"];
 const addPhotoCardForm = document.forms["add-photo-card"];
 const placeName = addPhotoCardForm.elements["place-name"];
 const imageLink = addPhotoCardForm.elements["image-link"];
-
-const editProfileFormBtn = editProfileForm.querySelector(".form__button");
-const addPhotoCardFormBtn = addPhotoCardForm.querySelector(".form__button");
 
 /* Popup */
 
@@ -70,8 +68,10 @@ editProfileBtn.addEventListener("click", () => {
   openPopup(editProfilePopup);
   userName.value = profileName.textContent;
   jobDescription.value = profileDescription.textContent;
-  resetErrors(editProfilePopup, validationSettings);
-  enableButton(editProfileFormBtn, validationSettings);
+  const editProfileValidation = new FormValidator(editProfileForm, validationSettings);
+  editProfileValidation.enableValidation();
+  editProfileValidation.resetErrors();
+  editProfileValidation.enableButton();
 });
 
 function handleEditProfileForm(evt) {
@@ -88,20 +88,22 @@ editProfileForm.addEventListener("submit", handleEditProfileForm);
 addPhotoCardBtn.addEventListener("click", (evt) => {
   openPopup(addPhotoCardPopup);
   addPhotoCardForm.reset();
-  resetErrors(addPhotoCardPopup, validationSettings);
-  disableButton(addPhotoCardFormBtn, validationSettings);
+  const addPhotoCardValidation = new FormValidator(addPhotoCardForm, validationSettings);
+  addPhotoCardValidation.enableValidation();
+  addPhotoCardValidation.resetErrors();
+  addPhotoCardValidation.disableButton();
 });
 
 function handleAddPhotoCardForm(evt) {
   evt.preventDefault();
-  renderPhotoCard({ title: placeName.value, src: imageLink.value, alt: placeName.value });
+  renderPhotoCard({ name: placeName.value, src: imageLink.value, alt: placeName.value });
   evt.target.reset();
   closePopup(addPhotoCardPopup);
 }
 
 addPhotoCardForm.addEventListener("submit", handleAddPhotoCardForm);
 
-/* Image  Popup*/
+/* Image  Popup */
 
 function openImagePopup(card) {
   photo.src = card.src;
@@ -111,9 +113,15 @@ function openImagePopup(card) {
   openPopup(imagePopup);
 }
 
-initialCards.forEach((item) => {
+/* Render Cards */
+
+function renderPhotoCard(item) {
   const card = new Card(item, "#photo-card", openImagePopup);
   const cardElement = card.generateCard();
   photosContainer.prepend(cardElement);
+}
+
+initialCards.forEach((initialCard) => {
+  renderPhotoCard(initialCard);
 });
 
