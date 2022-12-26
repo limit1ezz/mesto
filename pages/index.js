@@ -1,38 +1,28 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { initialCards, validationSettings } from "./constants.js";
-
-/* Dom Elements */
-
-// Elements
-const profileDescription = document.querySelector(".profile__description");
-const profileName = document.querySelector(".profile__name");
-const photosContainer = document.querySelector(".photos__inner");
-
-// Buttons
-const editProfileBtn = document.querySelector(".profile__edit");
-const addPhotoCardBtn = document.querySelector(".profile__add-photo-card");
-const closePopupBtns = document.querySelectorAll(".popup__close-btn");
-
-// Popups
-const popups = document.querySelectorAll(".popup");
-
-const editProfilePopup = document.querySelector(".popup_type_edit-profile");
-const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
-const imagePopup = document.querySelector(".popup_type_image");
-const photo = imagePopup.querySelector(".image-card__photo");
-const caption = imagePopup.querySelector(".image-card__caption");
-
-// Form
-const editProfileForm = document.forms["edit-profile"];
-const userName = editProfileForm.elements["user-name"];
-const jobDescription = editProfileForm.elements["job-description"];
-
-const addPhotoCardForm = document.forms["add-photo-card"];
-const placeName = addPhotoCardForm.elements["place-name"];
-const imageLink = addPhotoCardForm.elements["image-link"];
-
-const validations = {};
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import {
+  initialCards,
+  validationSettings,
+  profileDescription,
+  profileName,
+  photosContainer,
+  editProfileBtn,
+  addPhotoCardBtn,
+  closePopupBtns,
+  popups,
+  editProfilePopup,
+  addPhotoCardPopup,
+  imagePopup,
+  photo,
+  caption,
+  editProfileForm,
+  userName,
+  jobDescription,
+  addPhotoCardForm,
+  placeName,
+  imageLink,
+  validations,
+} from "../utils/constants.js";
 
 /* Popup */
 
@@ -140,3 +130,4 @@ function enableValidation(validationSettings) {
 }
 
 enableValidation(validationSettings);
+
