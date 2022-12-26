@@ -115,7 +115,7 @@ function createCard(item) {
 const photos = new Section(
   {
     items: cardsData,
-    renderer(item) {
+    renderer: (item) => {
       photos.addItem(createCard(item));
     },
   },
@@ -135,4 +135,3 @@ function enableValidation(validationSettings) {
 }
 
 enableValidation(validationSettings);
-
