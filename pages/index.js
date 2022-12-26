@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 import {
   cardsData,
   validationSettings,
@@ -57,10 +58,14 @@ popups.forEach((popup) => {
 
 /* Edit Profile Popup */
 
+const user = new UserInfo({ profileName, profileDescription });
+
 editProfileBtn.addEventListener("click", () => {
   openPopup(editProfilePopup);
-  userName.value = profileName.textContent;
-  jobDescription.value = profileDescription.textContent;
+
+  const { profileName, profileDescription } = user.getUserInfo();
+  userName.value = profileName;
+  jobDescription.value = profileDescription;
 
   validations["edit-profile"].resetErrors();
   validations["edit-profile"].enableButton();
@@ -68,8 +73,7 @@ editProfileBtn.addEventListener("click", () => {
 
 function handleEditProfileForm(evt) {
   evt.preventDefault();
-  profileName.textContent = userName.value;
-  profileDescription.textContent = jobDescription.value;
+  user.setUserInfo(userName.value, jobDescription.value);
   closePopup(editProfilePopup);
 }
 
@@ -135,3 +139,4 @@ function enableValidation(validationSettings) {
 }
 
 enableValidation(validationSettings);
+
