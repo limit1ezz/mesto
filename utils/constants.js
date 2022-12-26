@@ -1,4 +1,4 @@
-export const initialCards = [
+export const cardsData = [
   {
     name: "Карачаевск",
     src: "./images/photo-grid-atharva-tulsi.jpg",
@@ -35,6 +35,8 @@ export const validationSettings = {
   errorClass: "form__error-message_active",
 };
 
+export const validations = {};
+
 /* Dom Elements */
 
 // Elements
@@ -65,4 +67,3 @@ export const addPhotoCardForm = document.forms["add-photo-card"];
 export const placeName = addPhotoCardForm.elements["place-name"];
 export const imageLink = addPhotoCardForm.elements["image-link"];
 
-export const validations = {};

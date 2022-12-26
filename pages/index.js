@@ -1,7 +1,8 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
 import {
-  initialCards,
+  cardsData,
   validationSettings,
   profileDescription,
   profileName,
@@ -111,13 +112,17 @@ function createCard(item) {
   return cardElement;
 }
 
-function renderPhotoCard(item) {
-  photosContainer.prepend(createCard(item));
-}
+const photos = new Section(
+  {
+    items: cardsData,
+    renderer(item) {
+      photos.addItem(createCard(item));
+    },
+  },
+  photosContainer
+);
 
-initialCards.forEach((initialCard) => {
-  renderPhotoCard(initialCard);
-});
+photos.renderItems();
 
 function enableValidation(validationSettings) {
   const formList = Array.from(document.querySelectorAll(validationSettings.formSelector));
