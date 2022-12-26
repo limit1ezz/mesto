@@ -29,7 +29,6 @@ class Card {
 
   _setEventListeners() {
     this._likeBtn.addEventListener("click", () => {
-      console.log(this._title);
       this._handleLikePhotoCard();
     });
     this._deleteBtn.addEventListener("click", () => {
@@ -58,4 +57,3 @@ class Card {
 }
 
 export default Card;
-
