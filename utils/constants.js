@@ -47,16 +47,11 @@ export const photosContainer = document.querySelector(".photos__inner");
 // Buttons
 export const editProfileBtn = document.querySelector(".profile__edit");
 export const addPhotoCardBtn = document.querySelector(".profile__add-photo-card");
-export const closePopupBtns = document.querySelectorAll(".popup__close-btn");
 
 // Popups
-export const popups = document.querySelectorAll(".popup");
-
 export const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 export const addPhotoCardPopup = document.querySelector(".popup_type_add-photo-card");
 export const imagePopup = document.querySelector(".popup_type_image");
-export const photo = imagePopup.querySelector(".image-card__photo");
-export const caption = imagePopup.querySelector(".image-card__caption");
 
 // Form
 export const editProfileForm = document.forms["edit-profile"];
