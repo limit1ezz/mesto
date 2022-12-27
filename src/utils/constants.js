@@ -1,28 +1,35 @@
+import atharvaTulsi from "../images/photo-grid-atharva-tulsi.jpg";
+import tuman from "../images/photo-grid-tuman.jpg";
+import baikal from "../images/photo-grid-baikal.jpg";
+import elbrus from "../images/photo-grid-elbrus.jpg";
+import sochi from "../images/photo-grid-sochi.jpg";
+import baikal2 from "../images/photo-grid-baikal-2.jpg";
+
 export const cardsData = [
   {
     name: "Карачаевск",
-    src: "./images/photo-grid-atharva-tulsi.jpg",
+    src: atharvaTulsi,
   },
   {
     name: "Собака на стоге сена",
-    src: "./images/photo-grid-tuman.jpg",
+    src: tuman,
   },
   {
     name: "Озеро Байкал",
-    src: "./images/photo-grid-baikal.jpg",
+    src: baikal,
   },
   {
     name: "Гора Эльбрус",
-    src: "./images/photo-grid-elbrus.jpg",
+    src: elbrus,
   },
   {
     name: "Сочи",
-    src: "./images/photo-grid-sochi.jpg",
+    src: sochi,
   },
 
   {
     name: "Домбай",
-    src: "./images/photo-grid-baikal-2.jpg",
+    src: baikal2,
   },
 ];
 
@@ -57,3 +64,4 @@ export const imagePopup = document.querySelector(".popup_type_image");
 export const editProfileForm = document.forms["edit-profile"];
 export const userName = editProfileForm.elements["user-name"];
 export const jobDescription = editProfileForm.elements["job-description"];
+

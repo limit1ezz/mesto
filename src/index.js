@@ -1,9 +1,10 @@
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import UserInfo from "../components/UserInfo.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithImage from "../components/PopupWithImage.js";
+import "./index.css";
+import Card from "./components/Card.js";
+import FormValidator from "./components/FormValidator.js";
+import Section from "./components/Section.js";
+import UserInfo from "./components/UserInfo.js";
+import PopupWithForm from "./components/PopupWithForm.js";
+import PopupWithImage from "./components/PopupWithImage.js";
 
 import {
   cardsData,
@@ -19,7 +20,7 @@ import {
   userName,
   jobDescription,
   validations,
-} from "../utils/constants.js";
+} from "./utils/constants.js";
 
 /* Edit Profile Popup */
 
