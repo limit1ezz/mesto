@@ -57,8 +57,3 @@ export const imagePopup = document.querySelector(".popup_type_image");
 export const editProfileForm = document.forms["edit-profile"];
 export const userName = editProfileForm.elements["user-name"];
 export const jobDescription = editProfileForm.elements["job-description"];
-
-export const addPhotoCardForm = document.forms["add-photo-card"];
-export const placeName = addPhotoCardForm.elements["place-name"];
-export const imageLink = addPhotoCardForm.elements["image-link"];
-

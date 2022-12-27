@@ -18,8 +18,6 @@ import {
   imagePopup,
   userName,
   jobDescription,
-  placeName,
-  imageLink,
   validations,
 } from "../utils/constants.js";
 
