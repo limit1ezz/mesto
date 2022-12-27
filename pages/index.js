@@ -27,8 +27,8 @@ import {
 
 const user = new UserInfo({ profileName, profileDescription });
 
-function handleEditProfileForm() {
-  user.setUserInfo(userName.value, jobDescription.value);
+function handleEditProfileForm(inputValues) {
+  user.setUserInfo(inputValues["user-name"], inputValues["job-description"]);
 }
 
 const editProfilePopupWithForm = new PopupWithForm(editProfilePopup, handleEditProfileForm);
@@ -47,8 +47,14 @@ editProfileBtn.addEventListener("click", () => {
 
 /* Add Photo Card Popup */
 
-function handleAddPhotoCardForm() {
-  photos.addItem(createCard({ name: placeName.value, src: imageLink.value, alt: placeName.value }));
+function handleAddPhotoCardForm(inputValues) {
+  photos.addItem(
+    createCard({
+      name: inputValues["place-name"],
+      alt: inputValues["place-name"],
+      src: inputValues["image-link"],
+    })
+  );
 }
 
 const addPhotoCardPopupWithForm = new PopupWithForm(addPhotoCardPopup, handleAddPhotoCardForm);
