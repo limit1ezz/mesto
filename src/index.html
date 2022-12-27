@@ -4,8 +4,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
-    <script defer type="module" src="./pages/index.js"></script>
     <title>Mesto</title>
   </head>
 
@@ -13,17 +11,17 @@
     <div class="wrapper">
       <header class="page-header wrapper__page-header">
         <a class="page-header__logo logo">
-          <img class="logo__image" src="./images/header-logo.svg"
-            alt="Логотип
-            сайта">
+          <img class="logo__image" src="<%=require('./images/header-logo.svg')%>"
+          alt="Логотип
+          сайта">
         </a>
       </header>
 
       <main class="page-content wrapper__page-content">
         <section class="profile" aria-label="Информация о пользователе">
           <div class="profile__inner">
-            <img class="profile__image" src="./images/profile-photo.jpg"
-              alt="Аватар пользователя">
+            <img class="profile__image" src="<%=require('./images/profile-photo.jpg')%>"
+            alt="Аватар пользователя">
             <div class="profile__info">
               <div class="profile__content">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
