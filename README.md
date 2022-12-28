@@ -21,6 +21,8 @@
 - The project is hosted on github pages;
 - Stylelint is used for CSS linting;
 - Pure JS is used for interacting;
+- Object-oriented architecture;
+- The project is built using webpack;
 
 ## Stack:
 
@@ -31,11 +33,14 @@
 - [semantic]
 - [BEM]
 - [github pages]
-- [flex]
+- [OOP]
+- [webpack]
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm run live`
+### `npm run build`
+
+### `npm run dev`
 

@@ -11,7 +11,7 @@
     <div class="wrapper">
       <header class="page-header wrapper__page-header">
         <a class="page-header__logo logo">
-          <img class="logo__image" src="<%=require('./images/header-logo.svg')%>"
+          <img class="logo__image" src="<%=require('../images/header-logo.svg')%>"
           alt="Логотип
           сайта">
         </a>
@@ -20,7 +20,7 @@
       <main class="page-content wrapper__page-content">
         <section class="profile" aria-label="Информация о пользователе">
           <div class="profile__inner">
-            <img class="profile__image" src="<%=require('./images/profile-photo.jpg')%>"
+            <img class="profile__image" src="<%=require('../images/profile-photo.jpg')%>"
             alt="Аватар пользователя">
             <div class="profile__info">
               <div class="profile__content">
@@ -49,11 +49,11 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form form form_edit-profile" name="edit-profile" novalidate>
+          <form class="popup__form form form_edit-profile" name="editProfile" novalidate>
             <label class="form__label" aria-label="Имя пользователя">
               <input type="text" class="form__input form__input_type_user-name"
                 id="user-name-input"
-                name="user-name"
+                name="userName"
                 autocomplete="off"
                 placeholder="Имя" minlength="2" maxlength="40" required>
             </label>
@@ -61,7 +61,7 @@
             <label class="form__label" aria-label="Описание деятельности">
               <input type="text" class="form__input form__input_type_job-description"
                 id="job-description-input"
-                name="job-description"
+                name="jobDescription"
                 autocomplete="off" placeholder="Описание деятельности" minlength="2" maxlength="200"
                 required>
             </label>
@@ -75,18 +75,18 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form form form_add-photo-card" name="add-photo-card" novalidate>
+          <form class="popup__form form form_add-photo-card" name="addPhotoCard" novalidate>
             <label class="form__label" aria-label="Название места">
               <input type="text" class="form__input form__input_type_place-name"
                 id="place-name-input"
-                name="place-name"
+                name="placeName"
                 autocomplete="off" placeholder="Название" minlength="2" maxlength="30" required>
             </label>
             <span class="form__error-message place-name-input-error"></span>
             <label class="form__label" aria-label="Ссылка на картинку">
               <input type="url" class="form__input form__input_type_image-link"
                 id="image-link-input"
-                name="image-link"
+                name="imageLink"
                 autocomplete="off" placeholder="Ссылка на картинку" required>
             </label>
             <span class="form__error-message image-link-input-error"></span>

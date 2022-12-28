@@ -4,7 +4,6 @@
   "description": "Проектная работа курсa 'Фронтенд разработчик' от Яндекс Практикума",
   "main": "index.js",
   "scripts": {
-    "live": "live-server",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development"
   },
@@ -25,7 +24,6 @@
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "live-server": "^1.2.2",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-loader": "^7.0.2",
     "stylelint": "^14.13.0",
@@ -40,3 +38,4 @@
     "core-js": "^3.27.0"
   }
 }
+
